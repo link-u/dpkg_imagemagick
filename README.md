@@ -1,4 +1,5 @@
-# ImageMagick の deb パッケージ (Link-U)
+# ImageMagick の deb パッケージ (Link-U 公開リポジトリ)
+
 
 ## How to build
 
