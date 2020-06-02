@@ -6,8 +6,8 @@ set -eu
 root_dir=$(env --chdir "$(dirname $0)/.." pwd)
 
 ## HEAD のコミットID と HEAD の時のタグを取得
-git_commit="$(git rev-parse HEAD)"
-git_ref="$(git tag --points-at ${git_commit})"
+git_commit="$(env --chdir=${root_dir} git rev-parse HEAD)"
+git_ref="$(env --chdir=${root_dir} git tag --points-at ${git_commit})"
 
 ## ディストリビューションのコードネームの取得
 code_name="$(lsb_release -cs)"
