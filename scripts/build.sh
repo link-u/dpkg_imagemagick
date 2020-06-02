@@ -23,6 +23,7 @@ src_dir_fixed="imagemagick-${version_fixed}";
 if [ -d "${root_dir}/imagemagick/${src_dir_fixed}" ]; then
   env --chdir="${root_dir}/imagemagick/" rm -rf "${src_dir_fixed}";
 fi
+env --chdir="${root_dir}/imagemagick/" rm *".orig.tar.xz";
 env --chdir="${root_dir}/imagemagick/" mv "${src_dir}" "${src_dir_fixed}";
 
 ## debian package のビルド
