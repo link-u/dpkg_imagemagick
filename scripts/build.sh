@@ -16,14 +16,17 @@ env --chdir="${root_dir}/imagemagick/" tar xvf "$src";
 src_dir=$(basename $(ls -1vd ${root_dir}/imagemagick/*${version} | tail -n 1));
 
 ## debian パッケージで使われるバージョンニングルールになるように修正する
-version_fixed="$(echo ${version} | sed -e 's/-/./g')";
+version_fixed="$(echo ${version} | sed -e 's/-/\./')";
 
 ## ↑に伴ってディレクトリ名の修正
 src_dir_fixed="imagemagick-${version_fixed}";
 if [ -d "${root_dir}/imagemagick/${src_dir_fixed}" ]; then
   env --chdir="${root_dir}/imagemagick/" rm -rf "${src_dir_fixed}";
 fi
-env --chdir="${root_dir}/imagemagick/" rm *".orig.tar.xz";
+
+if [ -f "${root_dir}/imagemagick/imagemagick_${version_fixed}.orig.tar.xz" ]; then
+  env --chdir="${root_dir}/imagemagick/" rm "imagemagick_${version_fixed}.orig.tar.xz"
+fi
 env --chdir="${root_dir}/imagemagick/" mv "${src_dir}" "${src_dir_fixed}";
 
 ## debian package のビルド
