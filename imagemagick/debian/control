@@ -1,0 +1,23 @@
+Source: imagemagick
+Section: graphics
+Priority: optional
+Maintainer: Yoshimasa Hashida <yoshimasa.hashida@link-u.co.jp>
+Build-Depends: 
+  debhelper (>= 10), 
+  libfftw3-dev, libpng-dev, libjpeg-dev, libtiff-dev, libbz2-dev, 
+  libdjvulibre-dev, libfontconfig1-dev, libfreetype6-dev, liblcms2-dev, 
+  liblqr-1-0-dev, liblzma-dev, libpango1.0-dev, libopenexr-dev,
+  libwmf-dev, zlib1g-dev, libxml2-dev, libgif-dev, libwmf-dev, libperl-dev
+Standards-Version: 4.1.2
+Homepage: https://imagemagick.org/
+#Vcs-Browser: https://anonscm.debian.org/git/collab-maint/imagemagick.git
+#Vcs-Git: https://anonscm.debian.org/git/collab-maint/imagemagick.git
+
+Package: imagemagick
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+#Breaks: 
+Replaces: imagemagick (<< 8:7.0.10.16),
+Conflicts: imagemagick-6-common, imagemagick-6.q16,
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>

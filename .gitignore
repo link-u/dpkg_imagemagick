@@ -1,1 +1,13 @@
 .idea
+*.o
+*.dsc
+*.deb
+*.buildinfo
+*.ddeb
+
+imagemagick/debian/changelog
+imagemagick/imagemagick-*
+!*.tar.gz
+imagemagick/imagemagick_*.debian.tar.xz
+imagemagick/imagemagick_*_amd64.changes
+imagemagick/imagemagick_*.orig.tar.xz
