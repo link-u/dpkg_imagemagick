@@ -24,4 +24,4 @@ else
   ## tar ball とコミット ID からバージョン名を生成
   version="$(basename $(ls -1vd ${root_dir}/imagemagick/*.tar.gz | tail -n 1) .tar.gz | sed -e 's/-/\./')-$(TZ=JST-9 date +%Y%m%d.%H%M%S).${git_commit:0:7}+${code_name}"
 fi
-env --chdir "${root_dir}/imagemagick/debian" sed -i -r "s/UpstreamVersion-DebianRevision/${version}/g" changelog
+env --chdir "${root_dir}/imagemagick/debian" sed -i -r "s/%VERSION%/${version}/g" changelog

@@ -1,4 +1,4 @@
-imagemagick (UpstreamVersion-DebianRevision) unstable; urgency=medium
+imagemagick (%VERSION%) unstable; urgency=medium
 
   * See https://github.com/link-u/dpkg_imagemagick/releases
 
