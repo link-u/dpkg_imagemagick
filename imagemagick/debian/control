@@ -2,16 +2,44 @@ Source: imagemagick
 Section: graphics
 Priority: optional
 Maintainer: Yoshimasa Hashida <yoshimasa.hashida@link-u.co.jp>
-Build-Depends: 
-  debhelper (>= 10), 
-  libfftw3-dev, libpng-dev, libjpeg-dev, libtiff-dev, libbz2-dev, 
-  libdjvulibre-dev, libfontconfig1-dev, libfreetype6-dev, liblcms2-dev, 
-  liblqr-1-0-dev, liblzma-dev, libpango1.0-dev, libopenexr-dev,
-  libwmf-dev, zlib1g-dev, libxml2-dev, libgif-dev, libwmf-dev, libperl-dev
+Build-Depends: debhelper (>= 10),
+# for improving build
+ dh-exec, dh-autoreconf,
+# for linking compiling ...
+ pkg-config, libltdl-dev,
+# for libtool does not link to depends lib
+ chrpath,
+# for special function
+ libfftw3-dev, liblcms2-dev, liblqr-1-0-dev,
+# for fonts
+ libfreetype6-dev, libfontconfig1-dev, gsfonts,
+# for compression
+ zlib1g-dev, liblzma-dev, libbz2-dev,
+# for X
+ libx11-dev, libxext-dev, libxt-dev,
+# for plugins
+ ghostscript, libdjvulibre-dev, libexif-dev,
+ libjpeg-dev,
+# libopenjp2-7-dev, Needed for JPEG2000 but not in main see MIR #711061
+ libopenexr-dev, libperl-dev, libpng-dev, libtiff-dev,
+ libwmf-dev,
+# libgraphviz-dev, incompatible license against fftw
+# for converting svg
+ libpango1.0-dev, librsvg2-bin, librsvg2-dev, libxml2-dev,
+# for easy symbols of c++ lib
+ pkg-kde-tools,
+# for libgomp symbols
+ dpkg-dev (>= 1.17.6),
+# for test of poc
+ libtool-bin
+# for documentation
+Build-Depends-Indep: doxygen, doxygen-latex, graphviz,
+		     libxml2-utils,
+		     xsltproc
 Standards-Version: 4.1.2
 Homepage: https://imagemagick.org/
-#Vcs-Browser: https://anonscm.debian.org/git/collab-maint/imagemagick.git
-#Vcs-Git: https://anonscm.debian.org/git/collab-maint/imagemagick.git
+Vcs-Browser: https://github.com/ImageMagick/ImageMagick/
+Vcs-Git: https://github.com/ImageMagick/ImageMagick.git
 
 Package: imagemagick
 Architecture: any
@@ -19,5 +47,12 @@ Depends: ${shlibs:Depends}, ${misc:Depends}
 #Breaks: 
 Replaces: imagemagick (<< 8:7.0.10.16),
 Conflicts: imagemagick-6-common, imagemagick-6.q16,
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: image manipulation programs -- binaries
+ ImageMagick is a software suite to create, edit, and compose bitmap images.
+ It can read, convert and write images in a variety of formats (over 100)
+ including DPX, EXR, GIF, JPEG, JPEG-2000, PDF, PhotoCD, PNG, Postscript,
+ SVG, and TIFF. Use ImageMagick to translate, flip, mirror, rotate, scale,
+ shear and transform images, adjust image colors, apply various special
+ effects, or draw text, lines, polygons, ellipses and Bézier curves.
+ All manipulations can be achieved through shell commands as well as through
+ an X11 graphical interface (display).
