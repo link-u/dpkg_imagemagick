@@ -3,14 +3,14 @@
 set -eu
 
 ## git リポジトリ上の root のパスを取得
-root_dir=$(readlink -f $(cd $(dirname $0) && cd .. && pwd))
+root_dir=$(env --chdir "$(dirname $0)/.." pwd)
 
 ## epoch の定義
 epoch="8"
 
 ## HEAD のコミットID と HEAD の時のタグを取得
-git_commit="$(git -C ${root_dir} rev-parse HEAD)"
-git_ref="$(git -C ${root_dir} tag --points-at ${git_commit})"
+git_commit="$(env --chdir=${root_dir} git rev-parse HEAD)"
+git_ref="$(env --chdir=${root_dir} git tag --points-at ${git_commit})"
 
 ## ディストリビューションのコードネームの取得
 code_name="$(lsb_release -cs)"
