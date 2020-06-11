@@ -20,13 +20,7 @@ version_fixed="$(echo ${version} | sed -e 's/-/\./')";
 
 ## ↑に伴ってディレクトリ名の修正
 src_dir_fixed="imagemagick-${version_fixed}";
-if [ -d "${root_dir}/imagemagick/${src_dir_fixed}" ]; then
-  env --chdir="" rm -rf "${root_dir}/imagemagick/${src_dir_fixed}";
-fi
-
-if [ -f "${root_dir}/imagemagick/imagemagick_${version_fixed}.orig.tar.xz" ]; then
-  env --chdir="${root_dir}/imagemagick/" rm "imagemagick_${version_fixed}.orig.tar.xz"
-fi
+rm -rf "${root_dir}/imagemagick/${src_dir_fixed}" || true;
 env --chdir="${root_dir}/imagemagick/" mv "${src_dir}" "${src_dir_fixed}";
 
 ## debian package のビルド
