@@ -1,5 +1,7 @@
 # ImageMagick の deb パッケージ (Link-U 公開リポジトリ)
 
+![Build debian packages](https://github.com/link-u/dpkg_imagemagick/workflows/Build%20debian%20packages/badge.svg)
+
 ## 概要
 
 最新の ImageMagick の deb パッケージをビルドする.
